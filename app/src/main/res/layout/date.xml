@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.TextInputLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+    android:gravity="center_vertical">
+
+    <com.jheank16oz.questionform.DateTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:focusable="false"
+        style="@android:style/Widget.EditText"
+        android:paddingBottom="16dp"
+        android:drawableStart="@drawable/ic_date_range_black_24dp"
+        android:drawablePadding="16dp"
+        android:gravity="center_vertical"/>
+
+</android.support.design.widget.TextInputLayout>

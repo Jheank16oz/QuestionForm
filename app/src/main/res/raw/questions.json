@@ -1,0 +1,277 @@
+[
+  {
+    "id":1,
+    "tittle":"Ingrese su cedula numero",
+    "type": "input",
+    "obligatory": false,
+    "error": "La cédula no es valida",
+    "properties":{
+      "placeholder":"Texto cedula",
+      "input_type":"number",
+      "min": -5000,
+      "max":7000
+    }
+  },
+  {
+    "id":2,
+    "tittle":"Ingrese su cedula numero",
+    "type": "input",
+    "obligatory": false,
+    "error": "La cédula no es valida",
+    "properties":{
+      "placeholder":"Texto cedula",
+      "input_type":"number",
+      "length": 4,
+      "min": 5.5,
+      "max":7
+    }
+  },
+  {
+    "id":3,
+    "tittle":"Ingrese su cedula numero",
+    "type": "input",
+    "obligatory": false,
+    "error": "La cédula no es valida",
+    "properties":{
+      "placeholder":"Texto cedula",
+      "input_type":"number",
+      "length": 4,
+      "min": -5.5,
+      "max": 8
+    }
+  },
+  {
+    "id":4,
+    "tittle":"Ingrese la hora de inicio",
+    "type": "time",
+    "error": "La hora no es valida",
+    "obligatory": true,
+    "properties":{
+      "min_time": "16:57:20",
+      "max_time": "17:45:60"
+    }
+  },
+  {
+    "id":5,
+    "tittle":"Ingrese la fecha de inicio",
+    "type": "date",
+    "error": "La fecha no es valida",
+    "obligatory": false,
+    "properties":{
+      "min_date": "2018-12-03",
+      "max_date": "2019-01-01"
+    }
+  },
+  {
+    "id":6,
+    "tittle":"Ingrese la fecha y hora de inicio",
+    "type": "datetime",
+    "error": "La fecha y hora no es valida",
+    "obligatory": true,
+    "properties":{
+      "min_datetime": "2018-12-14 14:45:60",
+      "max_datetime": "2019-01-01 15:45:60"
+    }
+  },
+  {
+    "id":8,
+    "tittle":"Ingrese su cedula texto",
+    "type": "input",
+    "obligatory": false,
+    "error": "La cédula no es valida",
+    "properties":{
+      "placeholder":"Texto ingrese",
+      "input_type":"text",
+      "min": 5000,
+      "max":7000
+    }
+  },
+  {
+    "id":9,
+    "tittle":"Ingrese su cedula multilinea",
+    "type": "input",
+    "obligatory": false,
+    "error": "La cédula no es valida",
+    "properties":{
+      "placeholder":"Ingrese texto multilinea",
+      "input_type":"multiline",
+      "min": 5000,
+      "max":7000
+    }
+  },
+  {
+    "id":10,
+    "tittle":"Seleccione diagnóstico",
+    "type": "select",
+    "obligatory": false,
+    "error": "La cédula no es valida",
+    "properties":{
+      "items":[
+        {
+          "id":1,
+          "tittle": "Si",
+          "dependants":[
+            {
+              "id":11,
+              "tittle":"Ingrese su cedula numero",
+              "type": "input",
+              "obligatory": false,
+              "error": "La cédula no es valida",
+              "properties":{
+                "placeholder":"Texto cedula",
+                "input_type":"number",
+                "min": -5000,
+                "max":7000
+              }
+            },
+            {
+              "id":12,
+              "tittle":"Ingrese su cedula numero",
+              "type": "input",
+              "obligatory": false,
+              "error": "La cédula no es valida",
+              "properties":{
+                "placeholder":"Texto cedula",
+                "input_type":"number",
+                "length": 4,
+                "min": 5.5,
+                "max":7
+              }
+            },
+            {
+              "id":13,
+              "tittle":"Seleccione hijo",
+              "type": "select",
+              "obligatory": false,
+              "error": "La cédula no es valida",
+              "properties":{
+                "items":[
+                  {
+                    "id":3,
+                    "tittle": "Si",
+                    "dependants":[
+
+                    ]
+                  },
+                  {
+                    "id":4,
+                    "tittle": "No",
+                    "dependants":[]
+                  },
+                  {
+                    "id":5,
+                    "tittle": "Dependiendo",
+                    "dependants":[
+                      {
+                        "id":16,
+                        "tittle":"Ingrese la fecha y hora de inicio",
+                        "type": "datetime",
+                        "error": "La fecha y hora no es valida",
+                        "obligatory": true,
+                        "properties":{
+                          "min_datetime": "2018-12-14 14:45:60",
+                          "max_datetime": "2019-01-01 15:45:60"
+                        }
+                      },
+                      {
+                        "id":17,
+                        "tittle":"Ingrese la fecha y hora de inicio",
+                        "type": "datetime",
+                        "error": "La fecha y hora no es valida",
+                        "obligatory": true,
+                        "properties":{
+                          "min_datetime": "2018-12-14 14:45:60",
+                          "max_datetime": "2019-01-01 15:45:60"
+                        }
+                      },
+                      {
+                        "id":18,
+                        "tittle":"Seleccione hijo",
+                        "type": "select",
+                        "obligatory": false,
+                        "error": "La cédula no es valida",
+                        "properties":{
+                          "items":[
+                            {
+                              "id":6,
+                              "tittle": "Si",
+                              "dependants":[
+
+                              ]
+                            },
+                            {
+                              "id":7,
+                              "tittle": "No",
+                              "dependants":[]
+                            },
+                            {
+                              "id":8,
+                              "tittle": "Dependiendo",
+                              "dependants":[
+                                {
+                                  "id":18,
+                                  "tittle":"Ingrese la fecha y hora de inicio",
+                                  "type": "datetime",
+                                  "error": "La fecha y hora no es valida",
+                                  "obligatory": true,
+                                  "properties":{
+                                    "min_datetime": "2018-12-14 14:45:60",
+                                    "max_datetime": "2019-01-01 15:45:60"
+                                  }
+                                },
+                                {
+                                  "id":19,
+                                  "tittle":"Ingrese la fecha y hora de inicio",
+                                  "type": "datetime",
+                                  "error": "La fecha y hora no es valida",
+                                  "obligatory": true,
+                                  "properties":{
+                                    "min_datetime": "2018-12-14 14:45:60",
+                                    "max_datetime": "2019-01-01 15:45:60"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id":14,
+              "tittle":"Ingrese la fecha y hora de inicio",
+              "type": "datetime",
+              "error": "La fecha y hora no es valida",
+              "obligatory": true,
+              "properties":{
+                "min_datetime": "2018-12-14 14:45:60",
+                "max_datetime": "2019-01-01 15:45:60"
+              }
+            },
+            {
+              "id":15,
+              "tittle":"Ingrese la fecha y hora de inicio",
+              "type": "datetime",
+              "error": "La fecha y hora no es valida",
+              "obligatory": true,
+              "properties":{
+                "min_datetime": "2018-12-14 14:45:60",
+                "max_datetime": "2019-01-01 15:45:60"
+              }
+            }
+          ]
+        },
+        {
+          "id":2,
+          "tittle": "No",
+          "dependants":[]
+        }
+      ]
+    }
+  }
+
+
+]

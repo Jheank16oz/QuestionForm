@@ -1,0 +1,36 @@
+[
+  {
+    "id": 7,
+    "tittle": "Fotos del daño",
+    "type": "capture",
+    "error": "las fotos no son validas",
+    "obligatory": true,
+    "properties": {
+      "min_size_mb": 4,
+      "count": 3
+    }
+  },
+  {
+    "id": 11,
+    "tittle": "Propietarios",
+    "type": "form",
+    "obligatory": true,
+    "properties": {
+      "placeholder": "Texto cedula",
+      "form_count": 1,
+      "form": [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        }
+      ],
+      "form_tittle": "Vehiculo propietorio",
+      "form_content": ""
+    }
+  }
+]
