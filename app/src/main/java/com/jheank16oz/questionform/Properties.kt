@@ -50,7 +50,7 @@ class Properties {
     @SerializedName("count")
     @Expose
     var count: Int = 0
-    @SerializedName("items")
+    @SerializedName("options")
     @Expose
     var items: List<Item>? = null
     @SerializedName("form_count")
@@ -65,5 +65,9 @@ class Properties {
     @SerializedName("form_content")
     @Expose
     var formContent: String? = null
+    @SerializedName("form")
+    @Expose
+    var form: List<Question>? = null
+
 
 }

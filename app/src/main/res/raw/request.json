@@ -1,0 +1,165 @@
+{
+  "preguntas": [
+    {
+      "parents": [
+        {
+          "id": 181,
+          "obligatory": true,
+          "title": "Especifique el lugar del daño",
+          "type": "List",
+          "properties": {
+            "placeholder": null,
+            "options": [
+              {
+                "id": 81,
+                "question_name": "SALA",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": [
+                  184
+                ]
+              },
+              {
+                "id": 82,
+                "question_name": "BAÑO",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": [
+                  182
+                ]
+              },
+              {
+                "id": 83,
+                "question_name": "COCINA",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": [
+                  183
+                ]
+              },
+              {
+                "id": 84,
+                "question_name": "PATIO",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": [
+
+                ]
+              }
+            ],
+            "form": [
+
+            ]
+          }
+        }
+      ],
+      "childs": [
+        {
+          "id": 182,
+          "obligatory": true,
+          "title": "Elemento dañado",
+          "type": "List",
+          "properties": {
+            "placeholder": null,
+            "options": [
+              {
+                "id": 85,
+                "question_name": "TAPA",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": [
+                  183
+                ]
+              },
+              {
+                "id": 86,
+                "question_name": "RETRETE",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": [
+                  183
+                ]
+              }
+            ],
+            "form": [
+
+            ]
+          }
+        },
+        {
+          "id": 183,
+          "obligatory": true,
+          "title": "ESPECIFIQUE EL DAÑO",
+          "type": "Text",
+          "properties": {
+            "placeholder": null,
+            "options": [
+
+            ],
+            "form": [
+
+            ]
+          }
+        },
+        {
+          "id": 184,
+          "obligatory": true,
+          "title": "Elemento afectado",
+          "type": "List",
+          "properties": {
+            "placeholder": null,
+            "options": [
+              {
+                "id": 87,
+                "question_name": "BALDOSA",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": [
+
+                ]
+              },
+              {
+                "id": 88,
+                "question_name": "PARED",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": [
+
+                ]
+              },
+              {
+                "id": 89,
+                "question_name": "TECHO",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": [
+                  185,
+                  183
+                ]
+              }
+            ],
+            "form": [
+
+            ]
+          }
+        },
+        {
+          "id": 185,
+          "obligatory": true,
+          "title": "Especifique como ocurrio el daño",
+          "type": "Text",
+          "properties": {
+            "placeholder": null,
+            "options": [
+
+            ],
+            "form": [
+
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "mensaje": "Información adicional para el servicio"
+}

@@ -12,9 +12,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import kotlinx.android.synthetic.main.form.view.*
-import kotlinx.android.synthetic.main.layout_select.view.*
 import org.json.JSONArray
-import org.json.JSONObject
 
 
 /**
@@ -23,6 +21,8 @@ import org.json.JSONObject
  */
 
 class QuestionHelper(var context: Context, private var inflater: LayoutInflater?, var group:ViewGroup){
+
+    var childs:List<Question>? = null
 
     /**
      * Crea el componenete con el id de layout correspondiente
@@ -61,6 +61,8 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
 
         return null
     }
+
+
 
 
     fun label(question:Question?):View?{
@@ -125,7 +127,8 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
                 group.id = it.id
                 it.properties?.let{properties ->
                     properties.items?.let { items ->
-                        group.setQuestions(items)
+                        group.setItems(items)
+                        group.setChilds(childs)
                         group.initialize()
                     }
                 }
@@ -274,17 +277,22 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
 
     }
 
+    fun getQuestionByChildId(childId:Int): Question? {
+
+        val a = childs?.filter {  question -> question.id == childId }
+        return a?.get(0)
+    }
 
 
     companion object {
 
 
-        const val INPUT:String = "input"
+        const val INPUT:String = "Text"
         const val TIME:String = "time"
         const val DATE:String = "date"
         const val DATETIME:String = "datetime"
         const val CAPTURE:String = "capture"
-        const val SELECT:String = "select"
+        const val SELECT:String = "List"
         const val FORM:String = "form"
 
         const val INPUT_TYPE_TEXT = "text"

@@ -11,7 +11,7 @@ class Question{
     @SerializedName("id")
     @Expose
     var id: Int = 0
-    @SerializedName("tittle")
+    @SerializedName("title")
     @Expose
     var tittle: String? = null
     @SerializedName("type")
@@ -20,9 +20,6 @@ class Question{
     @SerializedName("obligatory")
     @Expose
     var obligatory: Boolean = false
-    @SerializedName("error")
-    @Expose
-    var error: String? = null
     @SerializedName("properties")
     @Expose
     var properties: Properties? = null

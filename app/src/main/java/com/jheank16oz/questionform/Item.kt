@@ -7,12 +7,15 @@ class Item {
     @SerializedName("id")
     @Expose
     var id: Int = 0
-    @SerializedName("tittle")
+    @SerializedName("question_name")
     @Expose
     var tittle: String? = null
-    @SerializedName("dependants")
+    @SerializedName("value_catalogue")
     @Expose
-    var dependants: List<Question>? = null
+    var catalogue: String? = null
+    @SerializedName("childs")
+    @Expose
+    var dependants: List<Int>? = null
 
     override fun toString(): String {
         return if (tittle != null) tittle!! else ""

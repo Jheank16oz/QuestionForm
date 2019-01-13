@@ -3,7 +3,6 @@ package com.jheank16oz.questionform
 
 import android.content.Context
 import android.support.constraint.ConstraintLayout
-import android.support.v7.app.AppCompatActivity
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -19,8 +18,11 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
     : ConstraintLayout(context, attrs, defStyleAttr){
 
     private var items:List<Item>? = null
+    private var selecteChilds:ArrayList<Question>? = null
     public var views = ArrayList<View?>()
     private var qHelper:QuestionHelper? = null
+    val inflater = LayoutInflater.from(context)
+
     private var att: AttributeSet? = null
 
     init {
@@ -28,9 +30,11 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
         attrs?.let {
             att = it
         }
+        qHelper = QuestionHelper(context,inflater , contentDependants)
+
     }
 
-    fun setQuestions(questions: List<Item>){
+    fun setItems(questions: List<Item>){
         this.items = questions
     }
 
@@ -52,20 +56,22 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
                 override fun onNothingSelected(parent: AdapterView<*>?) { }
 
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    contentDependants.removeAllViews()
+                    selecteChilds?.clear()
+                    views.clear()
                     if (position != 0){
-                        contentDependants.removeAllViews()
-                        views.clear()
-                        val inflater = LayoutInflater.from(context)
-                        qHelper = QuestionHelper(context,inflater , contentDependants)
+                        (itemList[position] as Item).dependants?.forEach { questionId ->
 
-                        (itemList[position] as Item).dependants?.forEach { question ->
 
-                            qHelper?.create(question)?.let {it->
-                                contentDependants?.addView(qHelper?.label(question))
-                                contentDependants.addView(it)
-                                views.add(it)
-                            }?:kotlin.run {
-                                views.add(null)
+                            qHelper?.getQuestionByChildId(questionId)?.let { question ->
+                                selecteChilds?.add(question)
+                                qHelper?.create(question)?.let { it ->
+                                    contentDependants?.addView(qHelper?.label(question))
+                                    contentDependants.addView(it)
+                                    views.add(it)
+                                } ?: kotlin.run {
+                                    views.add(null)
+                                }
                             }
                         }
                     }
@@ -81,14 +87,12 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
 
 
     fun getSelectedQuestions():List<Question?>?{
-        val item = this.spinner.selectedItem as Item
-        return item.dependants
+        return selecteChilds
     }
 
-
-
-
-
+    fun setChilds(childs: List<Question>?) {
+        qHelper?.childs = childs
+    }
 
 
 }
