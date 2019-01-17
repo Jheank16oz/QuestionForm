@@ -22,6 +22,8 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
     public var views = ArrayList<View?>()
     private var qHelper:QuestionHelper? = null
     val inflater = LayoutInflater.from(context)
+    private var cameraUtil: CameraUtil? = null
+
 
     private var att: AttributeSet? = null
 
@@ -30,7 +32,7 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
         attrs?.let {
             att = it
         }
-        qHelper = QuestionHelper(context,inflater , contentDependants)
+        selecteChilds = ArrayList()
 
     }
 
@@ -38,9 +40,12 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
         this.items = questions
     }
 
+    fun setCameraUtil(cameraUtil: CameraUtil?){
+        this.cameraUtil = cameraUtil
+    }
+
     fun initialize(){
         att?.let { it ->
-
             val itemList = ArrayList<Any>()
             itemList.add(Item(-1,"Seleccione una opción"))
             items?.let {
@@ -61,8 +66,6 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
                     views.clear()
                     if (position != 0){
                         (itemList[position] as Item).dependants?.forEach { questionId ->
-
-
                             qHelper?.getQuestionByChildId(questionId)?.let { question ->
                                 selecteChilds?.add(question)
                                 qHelper?.create(question)?.let { it ->
@@ -74,13 +77,13 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
                                 }
                             }
                         }
+                        error?.text = null
                     }
 
                 }
 
             }
 
-            //error?.text = "Seleccione una opción"
         }
 
     }
@@ -91,7 +94,17 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
     }
 
     fun setChilds(childs: List<Question>?) {
+        qHelper = QuestionHelper(context,inflater , contentDependants, cameraUtil)
         qHelper?.childs = childs
+
+    }
+
+    fun isEmptySelection(): Boolean {
+        return this.spinner.selectedItemPosition == 0
+    }
+
+    fun setError(s: String?) {
+        this.error.text = s
     }
 
 

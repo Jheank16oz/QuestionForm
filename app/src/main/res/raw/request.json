@@ -3,6 +3,36 @@
     {
       "parents": [
         {
+          "id": 131,
+          "obligatory": true,
+          "title": "Prueba",
+          "type": "Location",
+          "properties": {
+            "placeholder": null,
+            "options": [
+
+            ],
+            "form": [
+
+            ]
+          }
+        },
+        {
+          "id": 133,
+          "obligatory": true,
+          "title": "Imagen tres",
+          "type": "Image",
+          "properties": {
+            "placeholder": null,
+            "options": [
+
+            ],
+            "form": [
+
+            ]
+          }
+        },
+        {
           "id": 181,
           "obligatory": true,
           "title": "Especifique el lugar del daño",
@@ -149,7 +179,7 @@
           "title": "Especifique como ocurrio el daño",
           "type": "Text",
           "properties": {
-            "placeholder": null,
+            "placeholder": "Ingrese el lugar del daño",
             "options": [
 
             ],

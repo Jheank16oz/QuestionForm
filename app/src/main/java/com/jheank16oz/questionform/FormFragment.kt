@@ -1,6 +1,8 @@
 package com.jheank16oz.questionform
 
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -28,6 +30,8 @@ class FormFragment : Fragment() {
     private var questions:List<Question>? = null
     private var views = ArrayList<View?>()
     private var qHelper:QuestionHelper? = null
+    private var cameraUtil:CameraUtil? =null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +43,12 @@ class FormFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        cameraUtil = CameraUtil(this)
         // Inflate the layout for this fragment
         parent = inflater.inflate(R.layout.fragment_form, container, false) as ViewGroup
-        qHelper = context?.let { QuestionHelper(it,layoutInflater, parent?.contentQuestions!!) }
+        qHelper = context?.let { QuestionHelper(it,layoutInflater, parent?.contentQuestions!!, cameraUtil) }
+
+
 
         parent?.send?.setOnClickListener {
             qHelper?.attemptSend(questions, views)
@@ -151,5 +158,14 @@ class FormFragment : Fragment() {
                         putString(ARG_PARAM2, param2)
                     }
                 }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        cameraUtil?.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+       cameraUtil?.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }

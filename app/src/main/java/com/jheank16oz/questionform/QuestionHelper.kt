@@ -3,6 +3,8 @@ package com.jheank16oz.questionform
 import android.content.Context
 import android.support.design.chip.Chip
 import android.support.design.widget.TextInputLayout
+import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.text.*
 import android.text.method.DigitsKeyListener
 import android.util.Log
@@ -11,8 +13,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.*
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.form.view.*
+import kotlinx.android.synthetic.main.image.view.*
 import org.json.JSONArray
+import java.io.File
 
 
 /**
@@ -20,9 +25,11 @@ import org.json.JSONArray
  *  <p>QuestionHelper</p>
  */
 
-class QuestionHelper(var context: Context, private var inflater: LayoutInflater?, var group:ViewGroup){
+class QuestionHelper(var context: Context, private var inflater: LayoutInflater?, var group:ViewGroup, var cameraUtil: CameraUtil?){
+
 
     var childs:List<Question>? = null
+    var files = HashMap<Int,File>()
 
     /**
      * Crea el componenete con el id de layout correspondiente
@@ -51,6 +58,12 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
             FORM -> {
                 layout = R.layout.form
             }
+            CAPTURE -> {
+                layout = R.layout.image
+            }
+            LOCATION -> {
+                layout = R.layout.direction
+            }
 
         }
         layout?.let {
@@ -61,9 +74,6 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
 
         return null
     }
-
-
-
 
     fun label(question:Question?):View?{
         val component = inflater?.inflate(R.layout.label, group, false) as TextView?
@@ -100,8 +110,59 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
             FORM -> {
                 formProperties(this as LinearLayout, question)
             }
+            CAPTURE -> {
+                captureProperties(this as LinearLayout, question)
+            }
+            LOCATION -> {
+                locationProperties(this as ViewGroup, question)
+            }
         }
     }
+
+    private fun locationProperties(viewGroup: ViewGroup?, question: Question?) {
+        question?.let { it ->
+            viewGroup?.let { group ->
+                group.id = it.id
+            }
+        }
+
+    }
+
+    private fun captureProperties(linearLayout: LinearLayout?, question: Question?) {
+        question?.let { it ->
+            linearLayout?.let { group ->
+                group.id = it.id
+                question.properties?.let { it ->
+                    it.placeholder?.let {placeholder ->
+                        group.capture.text = placeholder
+                    }
+
+                    group.image.setOnClickListener {
+                        cameraUtil?.openCamera(object:CameraUtil.OnCameraListener{
+                            override fun onFileResult(file: File) {
+                                Glide.with(context).load(file).into(group.image)
+                                files[group.id] = file
+                            }
+
+                        })
+                    }
+                    group.capture.setOnClickListener {
+                        cameraUtil?.openCamera(object:CameraUtil.OnCameraListener{
+                            override fun onFileResult(file: File) {
+                                Glide.with(context).load(file).into(group.image)
+                                group.imageContainer.displayedChild = 1
+                                files[group.id] = file
+
+                            }
+
+                        })
+                    }
+                }
+            }
+        }
+
+    }
+
 
     private fun formProperties(linearLayout: LinearLayout?, question: Question?) {
         question?.let { it ->
@@ -129,6 +190,7 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
                     properties.items?.let { items ->
                         group.setItems(items)
                         group.setChilds(childs)
+                        group.setCameraUtil(cameraUtil)
                         group.initialize()
                     }
                 }
@@ -291,9 +353,10 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
         const val TIME:String = "time"
         const val DATE:String = "date"
         const val DATETIME:String = "datetime"
-        const val CAPTURE:String = "capture"
+        const val CAPTURE:String = "Image"
         const val SELECT:String = "List"
         const val FORM:String = "form"
+        const val LOCATION:String = "Location"
 
         const val INPUT_TYPE_TEXT = "text"
         const val INPUT_TYPE_NUMBER = "number"
@@ -325,7 +388,9 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
 
 
 
+
 }
+
 
 
 
