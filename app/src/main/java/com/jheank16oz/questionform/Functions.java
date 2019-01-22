@@ -106,7 +106,7 @@ public class Functions {
         return true;
     }
 
-    public  static File getCompressImage(String selectedFilePath, File file){
+    public static File getCompressImage(String selectedFilePath, File file){
 
         int m_inSampleSize = 4;
         try {
