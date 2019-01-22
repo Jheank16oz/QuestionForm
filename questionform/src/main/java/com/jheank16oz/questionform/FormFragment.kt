@@ -24,7 +24,7 @@ class FormFragment : Fragment() {
     private var questions:List<Question>? = null
     private var views = ArrayList<View?>()
     private var qHelper:QuestionHelper? = null
-    private var cameraUtil:CameraUtil? =null
+    private var cameraUtil: CameraUtil? =null
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

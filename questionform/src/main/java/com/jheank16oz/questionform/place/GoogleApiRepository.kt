@@ -6,7 +6,7 @@ package com.jheank16oz.questionform.place
  */
 
 import com.google.android.gms.maps.model.LatLng
-import com.jheank16oz.questionform.geocode.ResultGeoCode
+import com.jheank16oz.questionform.ResultGeoCode
 
 import retrofit2.Call
 import retrofit2.Callback

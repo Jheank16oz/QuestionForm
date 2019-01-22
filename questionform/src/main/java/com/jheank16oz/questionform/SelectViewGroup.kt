@@ -20,7 +20,7 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
     private var items:List<Item>? = null
     private var selecteChilds:ArrayList<Question>? = null
     var views = ArrayList<View?>()
-    private var qHelper:QuestionHelper? = null
+    private var qHelper: QuestionHelper? = null
     val inflater = LayoutInflater.from(context)
     private var cameraUtil: CameraUtil? = null
 
@@ -94,7 +94,7 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
     }
 
     fun setChilds(childs: List<Question>?) {
-        qHelper = QuestionHelper(context,inflater , contentDependants, cameraUtil)
+        qHelper = QuestionHelper(context, inflater, contentDependants, cameraUtil)
         qHelper?.childs = childs
 
     }

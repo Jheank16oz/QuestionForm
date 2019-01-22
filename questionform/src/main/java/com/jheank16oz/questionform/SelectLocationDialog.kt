@@ -35,7 +35,7 @@ class SelectLocationDialog : DialogFragment(), PlaceAutoCompleteWebservice.Place
     private lateinit var mMapFragment:SupportMapFragment
     private lateinit var locationText:TextView
     private lateinit var viewFragment:View
-    private var listener:SelectLatLngListener? = null
+    private var listener: SelectLatLngListener? = null
     private var  initialLatLng:LatLng? = null
     private var mProgressDialog:ProgressDialog? = null
     private var repository:GoogleApiRepository? = null
@@ -177,7 +177,7 @@ class SelectLocationDialog : DialogFragment(), PlaceAutoCompleteWebservice.Place
         fun selected(location: LatLng?, directionStr: String?)
     }
 
-    fun setSelectLatLngListener(listener:SelectLatLngListener?){
+    fun setSelectLatLngListener(listener: SelectLatLngListener?){
         this.listener = listener
     }
 

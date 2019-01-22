@@ -28,7 +28,7 @@ class CameraUtil(val fragment: Fragment?) {
      */
     private var selectedFilePath: String? = null
 
-    private var currentCamerListener:OnCameraListener? = null
+    private var currentCamerListener: OnCameraListener? = null
     /**
      * Objetivo para el directorio donde se almacenara las fotos
      * capturadas mediante Intent de Camera.

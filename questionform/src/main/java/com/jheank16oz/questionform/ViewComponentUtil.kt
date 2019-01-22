@@ -23,22 +23,26 @@ class ViewComponentUtil(var scrollQuestions: ScrollView?) {
             QuestionHelper.INPUT -> {
                 val parent = (this as TextInputLayout?)
                 val component = parent?.editText
-                return ViewResponse(parent?.valid(question) ?: false, component?.text, this)
+                return ViewResponse(parent?.valid(question)
+                        ?: false, component?.text, this)
             }
             QuestionHelper.TIME -> {
                 val parent = (this as TextInputLayout?)
                 val component = parent?.editText
-                return ViewResponse(parent?.valid(question) ?: false, component?.text, this)
+                return ViewResponse(parent?.valid(question)
+                        ?: false, component?.text, this)
             }
             QuestionHelper.DATE -> {
                 val parent = (this as TextInputLayout?)
                 val component = parent?.editText
-                return ViewResponse(parent?.valid(question) ?: false, component?.text, this)
+                return ViewResponse(parent?.valid(question)
+                        ?: false, component?.text, this)
             }
             QuestionHelper.DATETIME -> {
                 val parent = (this as TextInputLayout?)
                 val component = parent?.editText
-                return ViewResponse(parent?.valid(question) ?: false, component?.text, this)
+                return ViewResponse(parent?.valid(question)
+                        ?: false, component?.text, this)
             }
             QuestionHelper.SELECT -> {
                 var response: ViewResponse? = null
@@ -55,7 +59,8 @@ class ViewComponentUtil(var scrollQuestions: ScrollView?) {
             }
             QuestionHelper.LOCATION -> {
                 (this as DirectionView).let {
-                    return ViewResponse(it.valid(question) ?: false, it.directionStr, this)
+                    return ViewResponse(it.valid(question)
+                            ?: false, it.directionStr, this)
                 }
             }
 
@@ -146,7 +151,7 @@ class ViewComponentUtil(var scrollQuestions: ScrollView?) {
     }
 
 
-    fun attemptSend(list:ArrayList<View?>, questions: List<Question?>):ViewResponse?{
+    fun attemptSend(list:ArrayList<View?>, questions: List<Question?>): ViewResponse?{
         firstError = true
         currentErrorView = null
         val viewResponse = getResponse(list, questions)

@@ -11,7 +11,6 @@
             android:layout_width="40dp"
             android:layout_height="50dp"
             android:background="#00ffffff"
-            android:onClick="search"
             android:src="@drawable/ic_clear_black_24dp"
             android:visibility="gone" />
         <AutoCompleteTextView
@@ -33,7 +32,6 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="#00ffffff"
-            android:onClick="search"
             android:src="@drawable/ic_search_black_24dp" />
 
 </LinearLayout>

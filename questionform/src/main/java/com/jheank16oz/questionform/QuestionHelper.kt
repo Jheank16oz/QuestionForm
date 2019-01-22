@@ -37,7 +37,7 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
      * @param question contiene
      * @return una vista con las propiedades
      */
-    fun create(question:Question?): View? {
+    fun create(question: Question?): View? {
         var layout:Int? = null
         when(question?.type){
             INPUT -> {
@@ -75,7 +75,7 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
         return null
     }
 
-    fun label(question:Question?):View?{
+    fun label(question: Question?):View?{
         val component = inflater?.inflate(R.layout.label, group, false) as TextView?
         component?.text = question?.tittle
         if (question?.obligatory == true){

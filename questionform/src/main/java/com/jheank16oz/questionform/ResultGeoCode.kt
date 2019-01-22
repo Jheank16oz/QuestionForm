@@ -1,4 +1,4 @@
-package com.jheank16oz.questionform.geocode
+package com.jheank16oz.questionform
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

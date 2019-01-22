@@ -1,7 +1,7 @@
 package com.jheank16oz.questionform.place
 
 
-import com.jheank16oz.questionform.geocode.ResultGeoCode
+import com.jheank16oz.questionform.ResultGeoCode
 
 import retrofit2.Call
 import retrofit2.http.GET

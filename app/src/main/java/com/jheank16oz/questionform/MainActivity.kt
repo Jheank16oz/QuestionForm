@@ -2,13 +2,6 @@ package com.jheank16oz.questionform
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import android.widget.Toast
-import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
-import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_main.*
-import org.json.JSONObject
 
 class MainActivity : AppCompatActivity(){
 
@@ -17,7 +10,7 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
 
 
-        val json = JSONHandler
+       /* val json = com.jheank16oz.questionform.JSONHandler
                 .parseResource(this, R.raw.request)
 
         val jsonOBJ = JSONObject(json)
@@ -34,7 +27,7 @@ class MainActivity : AppCompatActivity(){
         }catch (e: JsonSyntaxException){
             Toast.makeText(this, "JSON malformed", Toast.LENGTH_LONG).show()
             e.printStackTrace()
-        }
+        }*/
 
 
     }

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">QuestionForm</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mensaje_camara_no_encontrada">No se encontró una app de cámara</string>
+    <string name="autocomplete_hint">Busca aquí tu ubicación</string>
+    <string name="ingrese_una_direccion">Ingrese una dirección</string>
+    <string name="no_se_encontraron_resultados_para">No se encontraron resultados para</string>
+
+    <array name="select">
+        <item>Seleccione una opción</item>
+        <item>Primer item</item>
+        <item>Segundo item</item>
+        <item>Tercer item</item>
+    </array>
+
+    <string name="permisos_necesarios_titulo">Permisos necesarios</string>
+    <string name="permiso_necesario_contenido">No haz habilitado los permisos para acceder a contenido multimedia y cámara</string>
+</resources>
