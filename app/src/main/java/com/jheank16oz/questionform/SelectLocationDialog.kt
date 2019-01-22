@@ -1,6 +1,7 @@
 package com.jheank16oz.questionform
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import android.widget.Toast
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.LocationServices
@@ -17,6 +19,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.jheank16oz.questionform.place.GoogleApiRepository
 import kotlinx.android.synthetic.main.layout_select_location_dialog.view.*
 
 
@@ -34,6 +37,8 @@ class SelectLocationDialog : DialogFragment(), PlaceAutoCompleteWebservice.Place
     private lateinit var viewFragment:View
     private var listener:SelectLatLngListener? = null
     private var  initialLatLng:LatLng? = null
+    private var mProgressDialog:ProgressDialog? = null
+    private var repository:GoogleApiRepository? = null
 
     override fun onPlaceSelected(latLng: LatLng?) {
         updateCamera(latLng)
@@ -58,6 +63,14 @@ class SelectLocationDialog : DialogFragment(), PlaceAutoCompleteWebservice.Place
         super.onCreateView(inflater, container, savedInstanceState)
         viewFragment = inflater.inflate(R.layout.layout_select_location_dialog, container, false)
 
+        mProgressDialog = ProgressDialog(context)
+        mProgressDialog?.let {
+            it.setTitle("Obteniendo referencia ...")
+            it.isIndeterminate = true
+        }
+
+        repository = GoogleApiRepository("AIzaSyAcBwJsEHGbxId6cCpR1TcAtWSED6Kuvo0")
+
         val mSearchView = viewFragment.autocomplete
         mSearchView?.initializeAutocomplete(4, "AIzaSyAcBwJsEHGbxId6cCpR1TcAtWSED6Kuvo0", this)
         viewFragment.toolbar?.setNavigationIcon(R.drawable.ic_clear_white_24dp)
@@ -73,13 +86,33 @@ class SelectLocationDialog : DialogFragment(), PlaceAutoCompleteWebservice.Place
         val transaction = childFragmentManager.beginTransaction()
         transaction.add(R.id.map, mMapFragment).commit()
         viewFragment.select.setOnClickListener {
-            listener?.selected(mMap?.cameraPosition?.target)
-            dismiss()
+            displayProgress(true)
+            mMap?.cameraPosition?.target?.let {latLng->
+                repository?.getDirection(latLng, object:GoogleApiRepository.GeocodingListener{
+
+                    override fun onSuccess(directionStr: String?) {
+                        listener?.selected(latLng,directionStr)
+                        displayProgress(false)
+                        dismiss()
+                    }
+
+                    override fun failure(msg: String) {
+                        displayProgress(false)
+                        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
+                    }
+
+
+                })
+            }
         }
 
 
         return viewFragment
     }
+
+    private fun displayProgress(display: Boolean)=
+            if (display) mProgressDialog?.show() else mProgressDialog?.dismiss()
+
 
     override fun onMapReady(googleMap: GoogleMap?) {
         mMap = googleMap
@@ -141,7 +174,7 @@ class SelectLocationDialog : DialogFragment(), PlaceAutoCompleteWebservice.Place
     }
 
     interface SelectLatLngListener{
-        fun selected(location:LatLng?)
+        fun selected(location: LatLng?, directionStr: String?)
     }
 
     fun setSelectLatLngListener(listener:SelectLatLngListener?){
