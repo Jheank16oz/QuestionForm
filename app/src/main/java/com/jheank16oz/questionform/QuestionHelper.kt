@@ -1,10 +1,8 @@
 package com.jheank16oz.questionform
 
 import android.content.Context
-import android.support.design.chip.Chip
+import android.content.Intent
 import android.support.design.widget.TextInputLayout
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.text.*
 import android.text.method.DigitsKeyListener
 import android.util.Log
@@ -30,6 +28,8 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
 
     var childs:List<Question>? = null
     var files = HashMap<Int,File>()
+    private var scrollQuestions: ScrollView? = null
+
 
     /**
      * Crea el componenete con el id de layout correspondiente
@@ -171,11 +171,16 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
                 it.properties?.let {properties ->
                     val content = group.contentForm
                     val add = group.add
+                    add.text = properties.placeholder?:it.tittle
 
-                    add.setOnClickListener {
-                        val chip = inflater?.inflate(R.layout.chip, group, false) as Chip?
+                    add.setOnClickListener {_->
+                        /*val chip = inflater?.inflate(R.layout.chip, group, false) as Chip?
                         chip?.isCheckable = false
-                        content.addView(chip)
+                        content.addView(chip)*/
+                        val intent = Intent(context,FormItemActivity::class.java)
+                        intent.putExtra(FormItemActivity.QUESTIONS, properties.form)
+                        intent.putExtra(FormItemActivity.TITTLE, properties.placeholder?:it.tittle)
+                        context.startActivity(intent)
                     }
                 }
             }
@@ -329,10 +334,11 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
     }
 
     fun attemptSend(questions: List<Question>?, views: ArrayList<View?>) {
+        val viewComponentUtil = ViewComponentUtil(scrollQuestions)
         questions?.let { it ->
             // generating JSON_ARRAY
             val response = JSONArray()
-            views.getResponse(questions)?.let {
+            viewComponentUtil.attemptSend(views,questions)?.let {
                 Log.e("Response", it.toString())
             }
         }
@@ -346,17 +352,23 @@ class QuestionHelper(var context: Context, private var inflater: LayoutInflater?
     }
 
 
+    fun setScrollView(scrollQuestions: ScrollView?) {
+
+        this.scrollQuestions = scrollQuestions
+    }
+
+
     companion object {
 
 
         const val INPUT:String = "Text"
-        const val TIME:String = "time"
-        const val DATE:String = "date"
-        const val DATETIME:String = "datetime"
+        const val TIME:String = "Time"
+        const val DATE:String = "Date"
+        const val DATETIME:String = "Datetime"
         const val CAPTURE:String = "Image"
         const val SELECT:String = "List"
-        const val FORM:String = "form"
-        const val LOCATION:String = "Location"
+        const val FORM:String = "Form"
+        const val LOCATION:String = "Direction"
 
         const val INPUT_TYPE_TEXT = "text"
         const val INPUT_TYPE_NUMBER = "number"
