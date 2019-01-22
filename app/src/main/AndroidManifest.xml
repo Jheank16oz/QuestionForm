@@ -42,7 +42,6 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".FormItemActivity"></activity>
     </application>
 
 </manifest>
