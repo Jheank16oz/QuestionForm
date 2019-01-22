@@ -1,9 +1,6 @@
 package com.jheank16oz.questionform
 
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -23,9 +20,6 @@ import kotlinx.android.synthetic.main.fragment_form.view.*
  *
  */
 class FormFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
     private var parent:ViewGroup? = null
     private var questions:List<Question>? = null
     private var views = ArrayList<View?>()
@@ -33,47 +27,19 @@ class FormFragment : Fragment() {
     private var cameraUtil:CameraUtil? =null
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         cameraUtil = CameraUtil(this)
         // Inflate the layout for this fragment
         parent = inflater.inflate(R.layout.fragment_form, container, false) as ViewGroup
         qHelper = context?.let { QuestionHelper(it,layoutInflater, parent?.contentQuestions!!, cameraUtil) }
-
-
+        qHelper?.setScrollView(parent?.scrollQuestions)
 
         parent?.send?.setOnClickListener {
             qHelper?.attemptSend(questions, views)
         }
 
         return parent
-    }
-
-
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
     }
 
     fun setQuestions(questions:List<Question>){
@@ -84,7 +50,6 @@ class FormFragment : Fragment() {
         if (!isAdded){
             return
         }
-
 
         when {
             questions == null -> {
@@ -112,52 +77,10 @@ class FormFragment : Fragment() {
 
             }
         }
-
-
-
-
     }
 
     fun setChilds(childs: List<Question>) {
         qHelper?.childs = childs
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
-    }
-
-    companion object {
-        private const val ARG_PARAM1 = "param1"
-        private const val ARG_PARAM2 = "param2"
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FormFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                FormFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -167,5 +90,9 @@ class FormFragment : Fragment() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
        cameraUtil?.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    fun setButtonText(msg:String){
+        parent?.send?.text = msg
     }
 }
