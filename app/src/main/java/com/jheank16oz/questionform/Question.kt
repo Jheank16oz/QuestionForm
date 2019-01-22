@@ -1,9 +1,11 @@
 package com.jheank16oz.questionform
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Question{
+class Question() : Parcelable {
     // el id de la pregunta es muy importante para la creacion del componente
     // se debe tener en cuenta que el id de pregunta padre e hija se validan como dos
     // preguntas diferentes y no debe existir una pregunta con el id de la pregunta padre
@@ -24,8 +26,13 @@ class Question{
     @Expose
     var properties: Properties? = null
 
-
-
+    constructor(parcel: Parcel) : this() {
+        id = parcel.readInt()
+        tittle = parcel.readString()
+        type = parcel.readString()
+        obligatory = parcel.readByte() != 0.toByte()
+        properties = parcel.readParcelable(Properties::class.java.classLoader)
+    }
 
 
     /** validaciones iniciales*/
@@ -135,13 +142,27 @@ class Question{
      * Se representa como una posible ubicación que abre otra vista
      * para buscar la dirección
      */
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
+        parcel.writeString(tittle)
+        parcel.writeString(type)
+        parcel.writeByte(if (obligatory) 1 else 0)
+        parcel.writeParcelable(properties, flags)
+    }
 
+    override fun describeContents(): Int {
+        return 0
+    }
 
+    companion object CREATOR : Parcelable.Creator<Question> {
+        override fun createFromParcel(parcel: Parcel): Question {
+            return Question(parcel)
+        }
 
-
-
-
-
+        override fun newArray(size: Int): Array<Question?> {
+            return arrayOfNulls(size)
+        }
+    }
 
 
 }
