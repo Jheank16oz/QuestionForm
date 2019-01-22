@@ -19,7 +19,7 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
 
     private var items:List<Item>? = null
     private var selecteChilds:ArrayList<Question>? = null
-    public var views = ArrayList<View?>()
+    var views = ArrayList<View?>()
     private var qHelper:QuestionHelper? = null
     val inflater = LayoutInflater.from(context)
     private var cameraUtil: CameraUtil? = null
@@ -47,7 +47,7 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
     fun initialize(){
         att?.let { it ->
             val itemList = ArrayList<Any>()
-            itemList.add(Item(-1,"Seleccione una opción"))
+            itemList.add(Item(-1,"Seleccione una opción", null, null))
             items?.let {
                 itemList.addAll(it)
             }
@@ -106,6 +106,4 @@ class SelectViewGroup   @kotlin.jvm.JvmOverloads constructor(
     fun setError(s: String?) {
         this.error.text = s
     }
-
-
 }
