@@ -1,6 +1,5 @@
 package com.jheank16oz.questionform
 
-import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -11,7 +10,7 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 
-class MainActivity : AppCompatActivity(), FormFragment.OnFragmentInteractionListener{
+class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +36,6 @@ class MainActivity : AppCompatActivity(), FormFragment.OnFragmentInteractionList
             e.printStackTrace()
         }
 
-
-    }
-
-    override fun onFragmentInteraction(uri: Uri) {
 
     }
 }
