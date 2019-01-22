@@ -5,7 +5,6 @@ import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.jheank16oz.questionform.place.AutocompleteResult;
-import com.jheank16oz.questionform.place.GooglePlaces;
+import com.jheank16oz.questionform.place.GoogleApiRepository;
 import com.jheank16oz.questionform.place.PlacesApiWebserviceAdapter;
 import com.jheank16oz.questionform.place.Prediction;
 
@@ -34,7 +33,7 @@ import retrofit2.Response;
 public class PlaceAutoCompleteWebservice extends CardView {
 
     private View mRoot;
-    private GooglePlaces mClient;
+    private GoogleApiRepository mClient;
     private AutoCompleteTextView mSearchView;
     private PlacesApiWebserviceAdapter mAdapter;
     private PlaceWebserviceListener mPlaceWebserviceListener;
@@ -113,7 +112,7 @@ public class PlaceAutoCompleteWebservice extends CardView {
     }
 
     public void selectPlace(Prediction prediction){
-        mClient.getLocation(prediction.getPlaceId(), new GooglePlaces.PlaceListener() {
+        mClient.getLocation(prediction.getPlaceId(), new GoogleApiRepository.PlaceListener() {
             @Override
             public void onSuccess(LatLng latLng) {
                mPlaceWebserviceListener.onPlaceSelected(latLng);
@@ -127,7 +126,7 @@ public class PlaceAutoCompleteWebservice extends CardView {
         }
         mStartLimit = startLimit;
         mPlaceWebserviceListener = placeWebserviceListener;
-        mClient = new GooglePlaces(mApiKey);
+        mClient = new GoogleApiRepository(mApiKey);
         mSearchView.addTextChangedListener(mTextWatcher);
 
     }
@@ -164,7 +163,7 @@ public class PlaceAutoCompleteWebservice extends CardView {
                         if (response.isSuccessful())
                         {
                             mAdapter.clear();
-                            mAdapter.addAll(response.body().predictions);
+                            mAdapter.addAll(response.body().getPredictions());
 
                         }
 
@@ -208,9 +207,9 @@ public class PlaceAutoCompleteWebservice extends CardView {
                 {
                     mAdapter.clear();
                     if (mPlaceWebserviceListener!=null) {
-                        if (!response.body().predictions.isEmpty()) {
-                            String placeId = response.body().predictions.get(0).getPlaceId();
-                            mClient.getLocation(placeId, new GooglePlaces.PlaceListener() {
+                        if (!response.body().getPredictions().isEmpty()) {
+                            String placeId = response.body().getPredictions().get(0).getPlaceId();
+                            mClient.getLocation(placeId, new GoogleApiRepository.PlaceListener() {
                                 @Override
                                 public void onSuccess(LatLng latLng) {
                                     mPlaceWebserviceListener.onPlaceSelected(latLng);
