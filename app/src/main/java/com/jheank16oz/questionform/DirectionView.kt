@@ -16,12 +16,14 @@ class DirectionView   @kotlin.jvm.JvmOverloads constructor(
         defStyleAttr: Int = 0)
     : ConstraintLayout(context, attrs, defStyleAttr), SelectLocationDialog.SelectLatLngListener{
 
-    override fun selected(location: LatLng?) {
+    override fun selected(location: LatLng?, directionStr: String?) {
         this.location = location
+        this.directionStr = directionStr
         updateView()
     }
 
-    private var location:LatLng? = null
+    var location:LatLng? = null
+    var directionStr:String? = null
     private  var question:Question? = null
     private var att: AttributeSet? = null
 
@@ -51,7 +53,12 @@ class DirectionView   @kotlin.jvm.JvmOverloads constructor(
 
     private fun updateView() {
         location?.let {
-            tittle.text = "ubicación = $location"
+            setError(null)
+            directionStr?.let {direction->
+                tittle.text = "$direction"
+            }?:kotlin.run {
+                tittle.text = "Dirección no disponible"
+            }
         }?:kotlin.run {
             question?.properties?.placeholder?.let {
                 tittle.text = it
@@ -62,8 +69,10 @@ class DirectionView   @kotlin.jvm.JvmOverloads constructor(
     }
 
     fun setError(s: String?) {
-        //error.text = s
+        error.text = s
     }
+
+
 
 
 }
