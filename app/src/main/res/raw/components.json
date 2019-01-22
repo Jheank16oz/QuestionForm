@@ -1,36 +1,78 @@
 [
   {
-    "id": 7,
-    "tittle": "Fotos del daño",
-    "type": "capture",
-    "error": "las fotos no son validas",
-    "obligatory": true,
-    "properties": {
-      "min_size_mb": 4,
-      "count": 3
-    }
+    "latitud" : "0",
+    "valor" : "1",
+    "longitud" : "0",
+    "idpregunta" : "181",
+    "idopcion" : "82",
+    "tipo" : "List",
+    "respuesta" : "BAÑO",
+    "idcatalogo" : "",
+    "form" : []
   },
   {
-    "id": 11,
-    "tittle": "Propietarios",
-    "type": "form",
-    "obligatory": true,
-    "properties": {
-      "placeholder": "Texto cedula",
-      "form_count": 1,
-      "form": [
-        {
+    "latitud" : "0",
+    "valor" : "1",
+    "longitud" : "0",
+    "idpregunta" : "182",
+    "idopcion" : "85",
+    "tipo" : "List",
+    "respuesta" : "TAPA",
+    "idcatalogo" : "",
+    "form" : []
+  },
+  {
+    "latitud" : "0",
+    "valor" : "0",
+    "longitud" : "0",
+    "idpregunta" : "183",
+    "idopcion" : "",
+    "tipo" : "Text",
+    "respuesta" : "SE DAÑO LA TAPA CUANDO LA ESTABA ABRIENDO",
+    "idcatalogo" : "",
+    "form" : []
+  },
+  {
+    "latitud" : "0",
+    "valor" : "1",
+    "longitud" : "0",
+    "idpregunta" : "189",
+    "idopcion" : "",
+    "tipo" : "Form",
+    "respuesta" : "",
+    "idcatalogo" : "",
+    "form" : [
 
-        },
-        {
-
-        },
-        {
-
-        }
-      ],
-      "form_tittle": "Vehiculo propietorio",
-      "form_content": ""
-    }
+      {
+        "latitud" : "0",
+        "valor" : "1",
+        "longitud" : "0",
+        "idpregunta" : "186",
+        "idopcion" : "",
+        "tipo" : "Text",
+        "respuesta" : "ingresando una marca de vehiculo ",
+        "idcatalogo" : ""
+      },
+      {
+        "latitud" : "0",
+        "valor" : "1",
+        "longitud" : "0",
+        "idpregunta" : "187",
+        "idopcion" : "",
+        "tipo" : "Text",
+        "respuesta" : "ingresando un modelo ",
+        "idcatalogo" : ""
+      },
+      {
+        "latitud" : "0",
+        "valor" : "1",
+        "longitud" : "0",
+        "idpregunta" : "188",
+        "idopcion" : "90",
+        "tipo" : "List",
+        "respuesta" : "Auto",
+        "idcatalogo" : "-99"
+      }
+    ]
   }
 ]

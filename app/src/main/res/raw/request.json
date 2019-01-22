@@ -3,188 +3,476 @@
     {
       "parents": [
         {
-          "id": 131,
+          "id": 301,
           "obligatory": true,
-          "title": "Prueba",
-          "type": "Location",
+          "title": "Con dirección a:",
+          "type": "Direction",
           "properties": {
-            "placeholder": null,
-            "options": [
-
-            ],
-            "form": [
-
-            ]
+            "placeholder": "Lugar de destino",
+            "options": [],
+            "form": []
           }
         },
         {
-          "id": 133,
-          "obligatory": true,
-          "title": "Imagen tres",
-          "type": "Image",
+          "id": 61,
+          "obligatory": false,
+          "title": "Con dirección a:",
+          "type": "Text",
           "properties": {
-            "placeholder": null,
-            "options": [
-
-            ],
-            "form": [
-
-            ]
+            "placeholder": "Lugar de destino",
+            "options": [],
+            "form": []
           }
         },
         {
-          "id": 181,
+          "id": 60,
+          "obligatory": false,
+          "title": "Viniendo de:",
+          "type": "Text",
+          "properties": {
+            "placeholder": "Desplazo del vehículo",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 59,
+          "obligatory": false,
+          "title": "Velocidad del Vehículo",
+          "type": "Text",
+          "properties": {
+            "placeholder": "Velocidad del vehículo",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 75,
+          "obligatory": false,
+          "title": "Válida Hasta",
+          "type": "Date",
+          "properties": {
+            "placeholder": "Fecha de caducidad",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 66,
           "obligatory": true,
-          "title": "Especifique el lugar del daño",
+          "title": "Existe Recupero en el Sitio",
+          "type": "List",
+          "properties": {
+            "placeholder": "Existe recupero",
+            "options": [
+              {
+                "id": 38,
+                "question_name": "NO",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              },
+              {
+                "id": 37,
+                "question_name": "SI",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              }
+            ],
+            "form": []
+          }
+        },
+        {
+          "id": 78,
+          "obligatory": false,
+          "title": "Observaciones del Asesor Legal",
+          "type": "Text",
+          "properties": {
+            "placeholder": "Ingrese observaciones",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 64,
+          "obligatory": true,
+          "title": "El Auto está detenido",
+          "type": "List",
+          "properties": {
+            "placeholder": "El Auto está detenido",
+            "options": [
+              {
+                "id": 34,
+                "question_name": "NO",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              },
+              {
+                "id": 33,
+                "question_name": "SI",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              }
+            ],
+            "form": []
+          }
+        },
+        {
+          "id": 54,
+          "obligatory": false,
+          "title": "Detalle de Daños",
+          "type": "List",
+          "properties": {
+            "placeholder": "Daños ocurridos",
+            "options": [
+              {
+                "id": 26,
+                "question_name": "Impacto Frontal",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              },
+              {
+                "id": 27,
+                "question_name": "Impacto Posterior",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              },
+              {
+                "id": 28,
+                "question_name": "Impacto Lateral Izquierdo",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              },
+              {
+                "id": 29,
+                "question_name": "Impacto Lateral Derecho",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              },
+              {
+                "id": 30,
+                "question_name": "Volcamiento",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              }
+            ],
+            "form": []
+          }
+        },
+        {
+          "id": 65,
+          "obligatory": true,
+          "title": "Existe Causante",
+          "type": "List",
+          "properties": {
+            "placeholder": "Existe Causante",
+            "options": [
+              {
+                "id": 36,
+                "question_name": "NO",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              },
+              {
+                "id": 35,
+                "question_name": "SI",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              }
+            ],
+            "form": []
+          }
+        },
+        {
+          "id": 82,
+          "obligatory": true,
+          "title": "Tipo de persona",
           "type": "List",
           "properties": {
             "placeholder": null,
             "options": [
               {
-                "id": 81,
-                "question_name": "SALA",
+                "id": 41,
+                "question_name": "NATURAL",
                 "option_value": "1",
                 "value_catalogue": "-99",
-                "childs": [
-                  184
-                ]
+                "childs": []
               },
               {
-                "id": 82,
-                "question_name": "BAÑO",
+                "id": 42,
+                "question_name": "JURIDICA",
                 "option_value": "1",
                 "value_catalogue": "-99",
-                "childs": [
-                  182
-                ]
+                "childs": []
+              }
+            ],
+            "form": []
+          }
+        },
+        {
+          "id": 63,
+          "obligatory": false,
+          "title": "Asegurado responsable del accidente",
+          "type": "List",
+          "properties": {
+            "placeholder": "Asegurado responsable",
+            "options": [
+              {
+                "id": 32,
+                "question_name": "NO",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
               },
               {
-                "id": 83,
-                "question_name": "COCINA",
+                "id": 31,
+                "question_name": "SI",
                 "option_value": "1",
                 "value_catalogue": "-99",
                 "childs": [
-                  183
-                ]
-              },
-              {
-                "id": 84,
-                "question_name": "PATIO",
-                "option_value": "1",
-                "value_catalogue": "-99",
-                "childs": [
-
+                  83
                 ]
               }
             ],
-            "form": [
-
-            ]
+            "form": []
+          }
+        },
+        {
+          "id": 53,
+          "obligatory": false,
+          "title": "Tipo del Evento",
+          "type": "List",
+          "properties": {
+            "placeholder": "Tipo del Evento",
+            "options": [
+              {
+                "id": 25,
+                "question_name": "ROBO",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              },
+              {
+                "id": 24,
+                "question_name": "DAÑO",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              }
+            ],
+            "form": []
+          }
+        },
+        {
+          "id": 62,
+          "obligatory": false,
+          "title": "Detalle de lo ocurrido",
+          "type": "Text",
+          "properties": {
+            "placeholder": "Detalle de lo sucedido",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 68,
+          "obligatory": false,
+          "title": "Nombre del Conductor del vh Asegurado",
+          "type": "Text",
+          "properties": {
+            "placeholder": "Nombre del conductor",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 69,
+          "obligatory": false,
+          "title": "Dirección del conductor",
+          "type": "Text",
+          "properties": {
+            "placeholder": "Dirección del conductor",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 70,
+          "obligatory": false,
+          "title": "Teléfono del conductor",
+          "type": "Text",
+          "properties": {
+            "placeholder": "Teléfono del conductor",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 71,
+          "obligatory": false,
+          "title": "Relación con el Asegurado",
+          "type": "Text",
+          "properties": {
+            "placeholder": "Relación con el Asegurado",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 72,
+          "obligatory": false,
+          "title": "Cédula del conductor del vh Asegurado",
+          "type": "Text",
+          "properties": {
+            "placeholder": "Cédula del conductor",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 73,
+          "obligatory": false,
+          "title": "Tipo de Licencia",
+          "type": "Text",
+          "properties": {
+            "placeholder": "Ingrese tipo de licencia",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 74,
+          "obligatory": true,
+          "title": "Expedido en",
+          "type": "Date",
+          "properties": {
+            "placeholder": "Fecha de expedición",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 76,
+          "obligatory": false,
+          "title": "Existe Afectados",
+          "type": "List",
+          "properties": {
+            "placeholder": "Existe Afectados",
+            "options": [
+              {
+                "id": 40,
+                "question_name": "NO",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              },
+              {
+                "id": 39,
+                "question_name": "SI",
+                "option_value": "1",
+                "value_catalogue": "-99",
+                "childs": []
+              }
+            ],
+            "form": []
+          }
+        },
+        {
+          "id": 77,
+          "obligatory": false,
+          "title": "Número de Afectados",
+          "type": "Text",
+          "properties": {
+            "placeholder": "Número de Afectados",
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 79,
+          "obligatory": false,
+          "title": "Foto Aviso de Siniestro Cara Frontal",
+          "type": "Image",
+          "properties": {
+            "placeholder": null,
+            "options": [],
+            "form": []
+          }
+        },
+        {
+          "id": 80,
+          "obligatory": false,
+          "title": "Foto Aviso de Siniestro Cara Posterior",
+          "type": "Image",
+          "properties": {
+            "placeholder": null,
+            "options": [],
+            "form": []
           }
         }
       ],
       "childs": [
         {
-          "id": 182,
+          "id": 83,
           "obligatory": true,
-          "title": "Elemento dañado",
-          "type": "List",
+          "title": "Vehículos Afectados",
+          "type": "Form",
           "properties": {
-            "placeholder": null,
-            "options": [
+            "placeholder": "Agregue vehiculo afectado",
+            "options": [],
+            "form": [
+              {
+                "id": 84,
+                "obligatory": true,
+                "title": "NOMBRE PROPIETARIO",
+                "type": "Text",
+                "properties": {
+                  "placeholder": "Nombre propietario",
+                  "options": []
+                }
+              },
               {
                 "id": 85,
-                "question_name": "TAPA",
-                "option_value": "1",
-                "value_catalogue": "-99",
-                "childs": [
-                  183
-                ]
+                "obligatory": true,
+                "title": "IDENTIFICACION PROPIETARIO",
+                "type": "Text",
+                "properties": {
+                  "placeholder": "Identificación del propietario",
+                  "options": []
+                }
               },
               {
                 "id": 86,
-                "question_name": "RETRETE",
-                "option_value": "1",
-                "value_catalogue": "-99",
-                "childs": [
-                  183
-                ]
-              }
-            ],
-            "form": [
-
-            ]
-          }
-        },
-        {
-          "id": 183,
-          "obligatory": true,
-          "title": "ESPECIFIQUE EL DAÑO",
-          "type": "Text",
-          "properties": {
-            "placeholder": null,
-            "options": [
-
-            ],
-            "form": [
-
-            ]
-          }
-        },
-        {
-          "id": 184,
-          "obligatory": true,
-          "title": "Elemento afectado",
-          "type": "List",
-          "properties": {
-            "placeholder": null,
-            "options": [
+                "obligatory": false,
+                "title": "Con dirección a:",
+                "type": "Direction",
+                "properties": {
+                  "placeholder": "Lugar de destino",
+                  "options": [],
+                  "form": []
+                }
+              },
               {
                 "id": 87,
-                "question_name": "BALDOSA",
-                "option_value": "1",
-                "value_catalogue": "-99",
-                "childs": [
-
-                ]
-              },
-              {
-                "id": 88,
-                "question_name": "PARED",
-                "option_value": "1",
-                "value_catalogue": "-99",
-                "childs": [
-
-                ]
-              },
-              {
-                "id": 89,
-                "question_name": "TECHO",
-                "option_value": "1",
-                "value_catalogue": "-99",
-                "childs": [
-                  185,
-                  183
-                ]
+                "obligatory": false,
+                "title": "Foto Aviso de Siniestro Cara Frontal",
+                "type": "Image",
+                "properties": {
+                  "placeholder": null,
+                  "options": [],
+                  "form": []
+                }
               }
-            ],
-            "form": [
-
-            ]
-          }
-        },
-        {
-          "id": 185,
-          "obligatory": true,
-          "title": "Especifique como ocurrio el daño",
-          "type": "Text",
-          "properties": {
-            "placeholder": "Ingrese el lugar del daño",
-            "options": [
-
-            ],
-            "form": [
-
             ]
           }
         }
